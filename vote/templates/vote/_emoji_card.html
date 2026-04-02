@@ -1,0 +1,12 @@
+<div class="emoji-card" id="emoji-{{ emoji.pk }}">
+    <div class="emoji-char">{{ emoji.character }}</div>
+    <div class="emoji-name">{{ emoji.name }}</div>
+    <div class="vote-count">{{ emoji.votes }} vote{{ emoji.votes|pluralize }}</div>
+    <button class="vote-btn"
+            hx-post="/vote/{{ emoji.pk }}/"
+            hx-target="#emoji-{{ emoji.pk }}"
+            hx-swap="outerHTML"
+            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+        Vote
+    </button>
+</div>

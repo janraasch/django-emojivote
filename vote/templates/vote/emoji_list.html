@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Pick Your Favorite Emoji!</h2>
+<p class="subtitle">Cast your vote — click as many times as you like</p>
+
+{% if emojis %}
+<div class="emoji-grid">
+    {% for emoji in emojis %}
+    {% include "vote/_emoji_card.html" %}
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,166 @@
+{% load static %}
+{% load django_htmx %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥳 Emoji Vote</title>
+    <link rel="stylesheet" href="{% static 'fonts/lobster.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/inter:wght@400;500;600;700.css' %}">
+    {% htmx_script %}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            background-color: #f7921d;
+            padding: 20px 20px 20px 40px;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Lobster', cursive;
+            color: #fff;
+            font-size: 36pt;
+            text-align: left;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1rem 2rem;
+        }
+
+        h2 {
+            font-family: 'Lobster', cursive;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #f7921d;
+        }
+
+        .subtitle {
+            font-family: 'Lobster', cursive;
+            text-align: center;
+            color: #828282;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .emoji-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .emoji-card {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 1rem;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .emoji-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .emoji-char {
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+
+        .emoji-name {
+            font-size: 0.85rem;
+            color: #828282;
+            margin: 0.25rem 0 0.75rem;
+        }
+
+        .vote-count {
+            display: inline-block;
+            background: #fdf2e9;
+            color: #f7921d;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+
+        .vote-btn {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            background: #f7921d;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .vote-btn:hover {
+            background: #a34400;
+        }
+
+        .site-footer {
+            max-width: 720px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 1rem;
+            border-top: 1px solid #e8e8e8;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #828282;
+            line-height: 1.6;
+        }
+
+        .site-footer a {
+            color: #f7921d;
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <h1>Emoji Vote</h1>
+    </header>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <footer class="site-footer">
+        Created by <a href="https://fosstodon.org/@janraasch">@janraasch</a>.
+        Sample project to showcase deployment via
+        <a href="https://github.com/janraasch/dsd-vps-kamal">dsd-vps-kamal</a>.<br>
+        Is your favorite emoji missing? Reach out on
+        <a href="https://fosstodon.org/@janraasch">Mastodon</a> :)
+    </footer>
+</body>
+</html>
