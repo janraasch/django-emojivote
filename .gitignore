@@ -17,3 +17,7 @@ db.sqlite3
 
 # .ruff_cache
 .ruff_cache/
+
+dsd_logs/
+
+.kamal/secrets

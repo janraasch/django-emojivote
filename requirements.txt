@@ -4,3 +4,9 @@ django-htmx==1.27.0
 sqlparse==0.5.5
 
 dsd-vps-kamal==0.1.1
+
+django-simple-deploy==1.4.1
+gunicorn
+whitenoise
+psycopg2-binary
+dj-database-url

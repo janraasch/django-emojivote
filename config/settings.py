@@ -118,3 +118,41 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+
+# VPS Kamal settings.
+import os
+
+if os.environ.get("ON_VPS"):
+    import dj_database_url
+    from django.http import HttpResponse
+
+    class HealthCheckMiddleware:
+        def __init__(self, get_response):
+            self.get_response = get_response
+
+        def __call__(self, request):
+            if request.path in ("/kamal/up", "/kamal/up/"):
+                return HttpResponse("OK")
+            return self.get_response(request)
+
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+
+    if os.environ.get("DEBUG") == "FALSE":
+        DEBUG = False
+    elif os.environ.get("DEBUG") == "TRUE":
+        DEBUG = True
+
+    ALLOWED_HOSTS = ["46.62.248.253", "emojivote.janraasch.com"]
+
+    db_url = os.environ.get("DATABASE_URL")
+    DATABASES["default"] = dj_database_url.parse(db_url)
+
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+    STATIC_URL = "/static/"
+
+    i = MIDDLEWARE.index("django.middleware.security.SecurityMiddleware")
+    MIDDLEWARE.insert(i, "config.settings.HealthCheckMiddleware")
+    MIDDLEWARE.insert(i + 1, "whitenoise.middleware.WhiteNoiseMiddleware")
+
+    CSRF_TRUSTED_ORIGINS = ["https://46.62.248.253", "https://emojivote.janraasch.com"]
