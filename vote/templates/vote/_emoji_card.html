@@ -6,6 +6,7 @@
             hx-post="/vote/{{ emoji.pk }}/"
             hx-target="#emoji-{{ emoji.pk }}"
             hx-swap="outerHTML"
+            hx-trigger="click throttle:150ms"
             hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
         Vote
     </button>
