@@ -143,7 +143,7 @@ if os.environ.get("ON_VPS"):
     elif os.environ.get("DEBUG") == "TRUE":
         DEBUG = True
 
-    ALLOWED_HOSTS = ["46.62.248.253", "emojivote.janraasch.com"]
+    ALLOWED_HOSTS = ["46.225.122.129", "emojivote.janraasch.com", "djangoconeu.janraasch.com"]
 
     db_url = os.environ.get("DATABASE_URL")
     DATABASES["default"] = dj_database_url.parse(db_url)
@@ -155,4 +155,4 @@ if os.environ.get("ON_VPS"):
     MIDDLEWARE.insert(i, "config.settings.HealthCheckMiddleware")
     MIDDLEWARE.insert(i + 1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
-    CSRF_TRUSTED_ORIGINS = ["https://46.62.248.253", "https://emojivote.janraasch.com"]
+    CSRF_TRUSTED_ORIGINS = ["https://46.225.122.129", "https://emojivote.janraasch.com", "https://djangoconeu.janraasch.com"]
