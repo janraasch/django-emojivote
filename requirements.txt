@@ -3,7 +3,7 @@ django==6.0.5
 django-htmx==1.27.0
 sqlparse==0.5.5
 
-dsd-vps-kamal==0.1.1
+dsd-vps-kamal==0.2.0
 
 django-simple-deploy==1.4.1
 gunicorn
