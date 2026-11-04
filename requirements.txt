@@ -1,7 +1,7 @@
 asgiref==3.13.0
 django==6.1.2
 django-htmx==1.29.0
-sqlparse==0.6.0
+sqlparse==0.6.1
 
 dsd-vps-kamal==0.2.0
 
